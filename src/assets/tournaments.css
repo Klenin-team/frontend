@@ -155,7 +155,7 @@ main .table .tournament:last-child {
 @media (width > 1000px) {
   .rat-container {
     position: absolute;
-    width: 100%;
+    width: 99%;
   }
   .rat-container::after {
     content: "";
@@ -168,7 +168,6 @@ main .table .tournament:last-child {
     float: right;
     position: relative;
     bottom: 50px;
-    right: 10px;
 }
 }
 
