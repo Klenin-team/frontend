@@ -3,22 +3,18 @@
 </script>
 
 <template>
-  <div class="login">
+  <div class="login register">
     <div class="welcome">
-      <h1>Добро пожаловать!</h1>
-      <div id="logo"></div>
-      <a href="" class="button fefu">
-        Войти через ДВФУ
-      </a>
+      <h1>Зарегистрируйтесь</h1>
     </div>
 
-    <div class="sign-in-lines">
-      <div id="line"></div>
-      <p>Или войдите по паролю</p>
-      <div id="line"></div>
-    </div>
 
     <div class="form">
+      <div class="group text">
+        <label for="name">Имя</label>
+        <input type="text" id="name">
+      </div>
+
       <div class="group text">
         <label for="email">Адрес электронной почты</label>
         <input type="email" id="email">
@@ -28,11 +24,11 @@
         <input type="password" id="password">
       </div>
       <div class="group">
-        <input type="submit" value="Войти" class="button">
+        <input type="submit" value="Зарегистрироваться" class="button">
       </div>
       <p class="register-link">
         или
-        <router-link to="register">зарегистрируйтесь</router-link>
+        <router-link to="login">войдите</router-link>
       </p>
     </div>
   </div>
