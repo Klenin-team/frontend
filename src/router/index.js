@@ -12,7 +12,12 @@ const router = createRouter({
       path: '/register',
       name: 'register',
       component: () => import('../views/RegisterView.vue')
-    }
+    },
+    {
+      path: '/tournaments',
+      name: 'tournaments',
+      component: () => import('../views/TournamentsView.vue')
+    },
   ]
 })
 

@@ -1,6 +1,8 @@
 <script setup>
-  import '../assets/login.css'
 </script>
+<style scoped>
+  @import '../assets/login.css';
+</style>
 
 <template>
   <div class="login register">

@@ -1,0 +1,207 @@
+h1 {
+  width: 100%;
+  text-align: center;
+  color: var(--white);
+}
+
+main {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+}
+
+main .filters-container {
+  display: flex;
+}
+
+main .filters-container .button#mobile {
+  display: none;
+  width: 100%;
+  max-width: 200px;
+  padding-top: 11px; 
+  padding-bottom: 11px; 
+  text-align: center;
+  background-color: var(--surface0);
+  border-radius: 5px;
+  margin-bottom: 24px;
+  cursor: pointer;
+}
+
+main .filters {
+  background-color: var(--surface0);
+  border-radius: 10px;
+  width: 220px;
+  padding: 10px;
+  padding-top: 20px;
+  border: 1px solid var(--surface2);
+  height: fit-content;
+  font-weight: 600;
+}
+
+main .filters #search {
+  display: grid;
+  grid-template-columns: 1fr 36px;
+  gap: 8px;
+}
+
+main .filters #search input {
+  border-radius: 10px;
+  background-color: var(--overlay0);
+  border: none;
+  color: var(--text);
+  padding: 8px;
+  width: calc(100% - 14px);
+  font-size: 16px;
+}
+
+main .filters #search input:focus {
+  background-color: var(--surface0);
+  outline: 1px solid var(--overlay0);
+}
+
+main .filters #search button {
+  background-color: var(--overlay0);
+  border: none;
+  border-radius: 10px;
+}
+
+main .filters #search svg * {
+  stroke: var(--text);
+  fill: transparent;
+}
+
+main .filters .checkbox-container {
+  display: flex;
+  align-items: center;
+  margin: 20px auto;
+}
+
+main .filters input[type=checkbox] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background-color: var(--subtext1);
+
+  &::after {
+    content: "";
+  }
+  
+  &:checked {
+    background-color: var(--green);
+    content: "marked";
+    padding-top: 2px;
+    padding-left: 5px;
+
+    &::after {
+      content: url("images/mark.svg");
+    }
+  }
+}
+
+main .table {
+  border: 1px solid var(--overlay0);
+  border-radius: 9px;
+  color: var(--white);
+}
+
+main .table a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+main .table .header {
+  background-color: var(--surface0);
+  padding: 13px;
+  border-radius: 9px 9px 0px 0px;
+}
+
+main .table .header * {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+}
+
+main .table .tournament {
+  padding-left: 20px;
+  padding-right: 20px;
+  border-bottom: 1px solid var(--overlay0);
+
+  display: grid;
+  grid-template-columns: 70% 1fr;
+}
+
+main .table .tournament * {
+  font-size: 20px;
+}
+
+main .table .tournament.official h2::after {
+  content: url(images/Official.svg);
+  padding-left: 9px;
+}
+
+main .table .tournament.ended {
+  color: var(--subtext0);
+}
+
+main .table .tournament .dates-container {
+  display: flex;
+  justify-content: space-around;
+  font-weight: 400;
+}
+
+main .table .tournament:last-child {
+  border: none;
+}
+
+@media (width > 1000px) {
+  .rat-container {
+    position: absolute;
+    width: 100%;
+  }
+  .rat-container::after {
+    content: "";
+    background-image: url(/images/tournaments-rat.svg);
+    background-repeat: no-repeat;
+    transform: scaleX(-1);
+    height: 80px;
+    width: 63px;
+    display: inline-block;
+    float: right;
+    position: relative;
+    bottom: 50px;
+    right: 10px;
+}
+}
+
+@media (width < 1000px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+  
+  main .filters {
+    display: none;
+    position: absolute;
+    top: 130px;
+  }
+
+  main .popup_opened {
+    display: inline;
+  }
+
+  main .filters-container {
+    justify-content: space-around;
+  }
+
+  main .filters-container .button#mobile {
+    display: block;
+  }
+
+  main .table .tournament .dates-container {
+    justify-content: space-between;
+  }
+}
+
+@media (width < 600px) {
+  main .table .tournament {
+    grid-template-columns: 1fr;
+  }
+}

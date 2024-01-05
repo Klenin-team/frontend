@@ -1,5 +1,4 @@
 body {
-  display: flex;
   font-weight: 500;
   height: 100%;
   font-size: 24px;
@@ -55,7 +54,7 @@ html {
 
 .login .welcome #logo::after {
   content: "";
-  background-image: url('./images/logo.svg');
+  background-image: url('/images/logo.svg');
   background-repeat: no-repeat;
   height: 50px;
   width: 100px;
@@ -75,7 +74,7 @@ html {
 .login .welcome .button::before {
   content: "";
   background-color: white;
-  background-image: url('./images/fefu.png');
+  background-image: url('/images/fefu.png');
   background-size: 35px;
   background-repeat: no-repeat;
   background-position: center;
