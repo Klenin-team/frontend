@@ -1,7 +1,6 @@
-.task header {
-  display: grid;
+article {
+  padding-bottom: 0;
 }
-
 .task .info {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -53,4 +52,10 @@
 .task table th:not(:last-child),
 .task table td:not(:last-child) {
   border-right: 1px solid var(--overlay0);
+}
+
+@media (width < 1100px) {
+  article {
+    padding-bottom: 50px;
+  }
 }
