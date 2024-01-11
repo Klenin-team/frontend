@@ -1,5 +1,6 @@
-import './assets/fonts/inter.css'
 import './assets/base.css'
+import './assets/fonts/inter.css'
+import './assets/fonts/jetbrains.css'
 
 import { createApp } from 'vue'
 import App from './App.vue'
