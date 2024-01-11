@@ -114,7 +114,7 @@ meow \`mew\` meow $meow$ meow **meow**
   <article class="task">
     <header>
       <router-link to="." class="mobile_only">Back</router-link>
-      <h1>Task: {{ $route.params.task_id }}</h1>
+      <h1 :class="task.verdict">{{ $route.params.task_id }}</h1>
     </header>
     <div class="info">
       <p v-if="task.memory_limitation">
