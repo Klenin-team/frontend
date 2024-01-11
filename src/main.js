@@ -1,4 +1,5 @@
 import './assets/base.css'
+import './assets/verdicts.css'
 import './assets/fonts/inter.css'
 import './assets/fonts/jetbrains.css'
 
