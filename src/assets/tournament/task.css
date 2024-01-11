@@ -1,0 +1,56 @@
+.task header {
+  display: grid;
+}
+
+.task .info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+}
+.task .info p {
+  margin: 6px auto;
+  margin-left: 0;
+}
+
+.task code {
+  font-family: 'JetBrains Mono';
+}
+
+.task table {
+  border-spacing: 0;
+  border-collapse: separate;
+  border-radius: 7px;
+  border: 1px solid var(--overlay0);
+
+  margin-bottom: 16px;
+}
+
+.task table * {
+  font-family: 'JetBrains Mono';
+  padding: 7px;
+}
+
+.task thead {
+  background-color: var(--surface0);
+}
+
+.task thead * {
+  font-style: normal;
+}
+
+.task thead th::after {
+  content: "скопировать";
+  padding-left: 20px;
+  font-size: 12px;
+  margin: auto;
+  color: var(--subtext0);
+}
+
+.task table tr>td {
+  border-top: 1px solid var(--overlay0);
+}
+
+.task table th:not(:last-child),
+.task table td:not(:last-child) {
+  border-right: 1px solid var(--overlay0);
+}

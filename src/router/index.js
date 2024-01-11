@@ -16,7 +16,24 @@ const router = createRouter({
     {
       path: '/tournaments',
       name: 'tournaments',
-      component: () => import('../views/TournamentsView.vue')
+      component: () => import('../views/TournamentsView.vue'),
+    },
+    {
+      path: '/tournament/:tournament_id',
+      name: 'tournament',
+      component: () => import('../views/TournamentViev.vue'),
+      children: [
+        {
+          path: '',
+          name: 'nothing',
+          component: () => import('../views/tournaments/Nothing.vue'),
+        },
+        {
+          path: ':task_id',
+          name: 'task',
+          component: () => import('../views/tournaments/Task.vue'),
+        }
+      ] 
     },
   ]
 })
