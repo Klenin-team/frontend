@@ -109,12 +109,21 @@ meow \`mew\` meow $meow$ meow **meow**
 <style>
   @import '../../assets/tournament/task.css';
 </style>
+<style scoped>
+  @import '../../assets/tournament/task-navbar.css';
+</style>
 
 <template>
   <article class="task">
     <header>
-      <router-link to="." class="mobile_only">Back</router-link>
-      <h1 :class="task.verdict">{{ $route.params.task_id }}</h1>
+      <router-link class="mobile-only button" to=".">Назад</router-link>
+      <button class="desktop-only">Задачи</button>
+      <div :class="task.verdict"></div>
+      <h1>{{ $route.params.task_id }}</h1>
+      <div id="align-right" class="big-desktop-only">
+        <button>Копировать код</button>
+        <button>Открыть редактор</button>
+      </div>
     </header>
     <div class="info">
       <p v-if="task.memory_limitation">
@@ -127,5 +136,9 @@ meow \`mew\` meow $meow$ meow **meow**
       <p v-if="task.output_file">Выходной файл: {{ task.output_file }}</p>
     </div>
     <p v-html="compiledMarkdown()"></p>
+    <footer>
+        <p class="big-desktop-only">Нажмите Ctrl-V, чтобы отправить решние</p>
+        <button class="button not-big-desktop-only editor-mobile-button">Редактор</button>
+    </footer>
   </article>
 </template>
