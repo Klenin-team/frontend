@@ -5,6 +5,9 @@
   import katex from 'katex'
   import "katex/dist/katex.min.css"
 
+  import { useTaskStore } from '@/stores/task.js';
+  const taskStore = useTaskStore()
+
   let task = {
     title: "Meowmeowmeow",
     verdict: "OK",
@@ -117,7 +120,7 @@ meow \`mew\` meow $meow$ meow **meow**
   <article class="task">
     <header>
       <router-link class="mobile-only button" to=".">Назад</router-link>
-      <button class="desktop-only">Задачи</button>
+      <button class="desktop-only" @click="() => { taskStore.toggleMenu() }">Задачи</button>
       <div :class="task.verdict"></div>
       <h1>{{ $route.params.task_id }}</h1>
       <div id="align-right" class="big-desktop-only">

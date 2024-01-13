@@ -1,5 +1,6 @@
 <script setup>
-  import { ref } from 'vue'
+  import { useTaskStore } from '../stores/task.js';
+  const taskStore = useTaskStore()
   let tasks = [
     {
       id: "1",
@@ -45,12 +46,12 @@
 </style>
 
 <template>
-  <div id="container">
-    <nav :class="{ mobile_hidden: $route.params.task_id }">
+  <div id="container" :class="{ fullwidth_container: taskStore.taskListClosed }">
+    <nav :class="{ mobile_hidden: $route.params.task_id, hidden: taskStore.taskListClosed }">
       <h1>{{ $route.params.tournament_id }}</h1>
       <button>Filters</button>
       <ul>
-        <li v-for="task in tasks" :class="task.verdict" class="task">
+        <li v-for="task in tasks" :class="task.verdict" class="task" >
           <router-link :to="task.id">{{ task.name }}</router-link>
         </li>
       </ul>

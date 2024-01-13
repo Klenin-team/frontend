@@ -3,6 +3,14 @@
   grid-template-columns: 300px 1fr;
 }
 
+.hidden {
+  display: none;
+}
+
+.fullwidth_container {
+  grid-template-columns: 1fr!important;
+}
+
 @media (width < 700px) {
   #container {
     grid-template-columns: 1fr;
