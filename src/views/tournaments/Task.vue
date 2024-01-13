@@ -53,9 +53,9 @@
       <p v-if="currentTask.input_file">Входной файл: {{ currentTask.input_file }}</p>
       <p v-if="currentTask.output_file">Выходной файл: {{ currentTask.output_file }}</p>
     </div>
-    <p v-html="renderedTaskText"></p>
+    <div v-html="renderedTaskText"></div>
     <footer>
-        <p class="big-desktop-only">Нажмите Ctrl-V, чтобы отправить решние</p>
+        <p class="big-desktop-only send-on-ctrl-v">Нажмите Ctrl-V, чтобы отправить решние</p>
         <button class="button not-big-desktop-only editor-mobile-button">Редактор</button>
     </footer>
   </article>

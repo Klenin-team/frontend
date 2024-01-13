@@ -16,6 +16,12 @@ header #align-right {
   margin-left: auto;
 }
 
+footer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
 .mobile-only {
   display: none;
 }
