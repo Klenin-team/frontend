@@ -2,6 +2,7 @@ body {
   background-color: var(--base);
   color: var(--text);
   font-family: Inter, sans;
+  height: calc(100vh - 16px);
 }
 
 #app {
