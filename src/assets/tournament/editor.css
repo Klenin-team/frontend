@@ -74,3 +74,15 @@ label[for=select-what-send] {
   width: 100vw;
   height: 100vh;
 }
+
+@media (width < 900px) {
+  .editor-container {
+    width: calc(100vw - (16px * 2));
+  }
+}
+
+@media (width < 600px) {
+  .submit-menu {
+    grid-template-columns: 1fr;
+  }
+}
