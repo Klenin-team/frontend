@@ -1,6 +1,8 @@
 <script setup>
   import { onMounted, ref } from 'vue'
 
+  import Editor from '@/components/Editor.vue'
+
   import { storeToRefs } from 'pinia'
   import { useTaskStore } from '@/stores/task.js';
 
@@ -8,7 +10,13 @@
 
   let taskStore = useTaskStore()
 
-  let { currentTask, renderedTaskText, humanReadableTime, humanReadableMemory } = storeToRefs(taskStore)
+  let { 
+    currentTask,
+    renderedTaskText, 
+    humanReadableTime, 
+    humanReadableMemory,
+    editorClosed
+  } = storeToRefs(taskStore)
 
   onMounted(() => {
     document.querySelectorAll('table').forEach((table) => {
@@ -40,7 +48,7 @@
       <h1>{{ $route.params.task_id }}</h1>
       <div id="align-right" class="big-desktop-only">
         <button>Копировать код</button>
-        <button>Открыть редактор</button>
+        <button @click="taskStore.toggleEditor">Открыть редактор</button>
       </div>
     </header>
     <div class="info">
@@ -56,7 +64,11 @@
     <div v-html="renderedTaskText"></div>
     <footer>
         <p class="big-desktop-only send-on-ctrl-v">Нажмите Ctrl-V, чтобы отправить решние</p>
-        <button class="button not-big-desktop-only editor-mobile-button">Редактор</button>
+        <button class="button not-big-desktop-only editor-mobile-button"
+          @click="taskStore.toggleEditor">Редактор</button>
     </footer>
   </article>
+  <div :class="{ hidden: editorClosed }">
+    <Editor/>
+  </div>
 </template>

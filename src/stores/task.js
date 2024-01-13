@@ -5,6 +5,8 @@ export const useTaskStore = defineStore('task', {
   state: () => {
     return { 
       taskListClosed: false,
+      editorClosed: true,
+
       tasksList: [
          {
            id: "1",
@@ -71,7 +73,10 @@ meow \`mew\` meow $meow$ meow **meow**
         time_limitation: 60000,
         input_file: 'Стандартный ввод',
         output_file: 'input.txt'
-      }
+      },
+      
+      selectedLanguage: "",
+      code: ""
     }
   },
   getters: {
@@ -82,6 +87,9 @@ meow \`mew\` meow $meow$ meow **meow**
   actions: {
     toggleMenu() {
       this.taskListClosed = !this.taskListClosed
+    },
+    toggleEditor() {
+      this.editorClosed = !this.editorClosed
     }
   }
 })

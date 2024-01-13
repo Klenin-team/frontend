@@ -1,6 +1,6 @@
 <script setup>
   import { storeToRefs } from 'pinia'
-  import { useTaskStore } from '../stores/task.js'
+  import { useTaskStore } from '@/stores/task.js'
 
   const taskStore = useTaskStore()
   let { tasksList } = storeToRefs(taskStore);
