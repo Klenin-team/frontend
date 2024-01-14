@@ -1,5 +1,5 @@
 .editor-container {
-  position: absolute;
+  position: fixed;
   background-color: var(--surface0);
   right: 0;
   top: 0;
@@ -10,6 +10,7 @@
 
   display: grid;
   grid-template-rows: 1fr auto;
+  overflow: auto;
 }
 
 .close {
