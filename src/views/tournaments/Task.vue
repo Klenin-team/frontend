@@ -15,7 +15,8 @@
     renderedTaskText, 
     humanReadableTime, 
     humanReadableMemory,
-    editorClosed
+    editorClosed,
+    clipboardAvaliable
   } = storeToRefs(taskStore)
 
   onMounted(() => {
@@ -38,6 +39,9 @@
             taskStore.code = await blob.text()
             taskStore.editorClosed = false
           })
+        }).catch((err) => {
+          console.log(err)
+          taskStore.clipboardAvaliable = false
         })
         
       }
@@ -77,7 +81,7 @@
     </div>
     <div v-html="renderedTaskText"></div>
     <footer>
-        <p class="big-desktop-only send-on-ctrl-v">Нажмите Ctrl-V, чтобы отправить решние</p>
+        <p v-if="clipboardAvaliable" class="big-desktop-only send-on-ctrl-v">Нажмите Ctrl-V, чтобы отправить решние</p>
         <button class="button not-big-desktop-only editor-mobile-button"
           @click="taskStore.toggleEditor">Редактор</button>
     </footer>
