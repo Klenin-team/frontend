@@ -13,7 +13,7 @@
 
 <template>
   <div id="container" :class="{ fullwidth_container: taskStore.taskListClosed }">
-    <nav :class="{ mobile_hidden: $route.params.task_id, hidden: taskStore.taskListClosed }">
+    <nav :class="{ mobile_hidden: $route.params.task_id, hidden: taskStore.taskListClosed }" class="taskList">
       <h1>{{ $route.params.tournament_id }}</h1>
       <button>Filters</button>
       <ul>
