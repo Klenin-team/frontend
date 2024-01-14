@@ -38,6 +38,11 @@ main {
   height: 100%;
 }
 
+.cm-editor {
+  height: 100%;
+  overflow: hidden;
+}
+
 :root {
   --rosewater: #f4dbd6;
   --flamingo: #f0c6c6;
