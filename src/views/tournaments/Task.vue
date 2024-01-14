@@ -28,6 +28,20 @@
         }
       }
     })
+
+    document.addEventListener("keydown", async (e) => {
+      if (e.ctrlKey && e.keyCode == 86) { // ctrl-v
+        navigator.clipboard.read().then(async (e) => {
+          console.log(e)
+          e.forEach(async (item) => {
+            let blob = await item.getType("text/plain")
+            taskStore.code = await blob.text()
+            taskStore.editorClosed = false
+          })
+        })
+        
+      }
+    })
   })
   
 </script>
