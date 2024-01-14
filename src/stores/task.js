@@ -76,7 +76,8 @@ meow \`mew\` meow $meow$ meow **meow**
       },
       
       selectedLanguage: "",
-      code: ""
+      code: "",
+      clipboardAvaliable: Boolean(navigator.clipboard)
     }
   },
   getters: {
