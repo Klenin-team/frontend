@@ -1,9 +1,18 @@
 <script setup>
   import { storeToRefs } from 'pinia'
+  import { useRoute } from 'vue-router'
   import { useTaskStore } from '@/stores/task.js'
+  import { useLayoutStore } from '@/stores/layout.js'
 
   const taskStore = useTaskStore()
-  let { tasksList } = storeToRefs(taskStore);
+  const layoutStore = useLayoutStore()
+
+  let { tasksList } = storeToRefs(taskStore)
+
+  const route = useRoute()
+
+  taskStore.getTask(route.params.task_id)
+  taskStore.getTasks(route.params.tournament_id)
 </script>
 
 <style scoped>
@@ -12,8 +21,9 @@
 </style>
 
 <template>
-  <div id="container" :class="{ fullwidth_container: taskStore.taskListClosed }">
-    <nav :class="{ mobile_hidden: $route.params.task_id, hidden: taskStore.taskListClosed }" class="taskList">
+  {{ $route.params.task_id }}
+  <div id="container" :class="{ fullwidth_container: layoutStore.taskListClosed }">
+    <nav :class="{ mobile_hidden: $route.params.task_id, hidden: layoutStore.taskListClosed }" class="taskList">
       <h1>{{ $route.params.tournament_id }}</h1>
       <button>Filters</button>
       <ul>

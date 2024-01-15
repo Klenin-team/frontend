@@ -4,20 +4,24 @@
   import Editor from '@/components/Editor.vue'
 
   import { storeToRefs } from 'pinia'
-  import { useTaskStore } from '@/stores/task.js';
+  import { useTaskStore } from '@/stores/task.js'
+  import { useLayoutStore } from '@/stores/layout.js'
 
   import "katex/dist/katex.min.css"
 
   let taskStore = useTaskStore()
+  let layoutStore = useLayoutStore()
 
   let { 
     currentTask,
     renderedTaskText, 
     humanReadableTime, 
     humanReadableMemory,
+  } = storeToRefs(taskStore)
+  let {
     editorClosed,
     clipboardAvaliable
-  } = storeToRefs(taskStore)
+  } = storeToRefs(layoutStore)
 
   onMounted(() => {
     document.querySelectorAll('table').forEach((table) => {
@@ -36,15 +40,15 @@
           console.log(e)
           e.forEach(async (item) => {
             let blob = await item.getType("text/plain")
-            taskStore.code = await blob.text()
-            taskStore.editorClosed = false
+            layoutStore.code = await blob.text()
+            layoutStore.editorClosed = false
           })
         }).catch((err) => {
           console.log(err)
-          taskStore.clipboardAvaliable = false
+          layoutStore.clipboardAvaliable = false
         })
       } else if (e.keyCode == 27) { // Escape
-        taskStore.editorClosed = true;
+        layoutStore.editorClosed = true;
       }
     })
   })
@@ -62,12 +66,12 @@
   <article class="task">
     <header>
       <router-link class="mobile-only button" to=".">Назад</router-link>
-      <button class="desktop-only" @click="() => { taskStore.toggleMenu() }">Задачи</button>
+      <button class="desktop-only" @click="() => { layoutStore.toggleMenu() }">Задачи</button>
       <div :class="currentTask.verdict"></div>
       <h1>{{ $route.params.task_id }}</h1>
       <div id="align-right" class="big-desktop-only">
         <button>Копировать код</button>
-        <button @click="taskStore.toggleEditor">Открыть редактор</button>
+        <button @click="layoutStore.toggleEditor">Открыть редактор</button>
       </div>
     </header>
     <div class="info">
@@ -84,7 +88,7 @@
     <footer>
         <p v-if="clipboardAvaliable" class="big-desktop-only send-on-ctrl-v">Нажмите Ctrl-V, чтобы отправить решние</p>
         <button class="button not-big-desktop-only editor-mobile-button"
-          @click="taskStore.toggleEditor">Редактор</button>
+          @click="layoutStore.toggleEditor">Редактор</button>
     </footer>
   </article>
   <div :class="{ hidden: editorClosed }">

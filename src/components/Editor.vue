@@ -4,7 +4,7 @@
 
   import { catppuccin } from '@/assets/codemirror-theme.js'
 
-  import { useTaskStore } from '@/stores/task.js';
+  import { useLayoutStore } from '@/stores/layout.js';
   import { storeToRefs } from 'pinia'
 
   import { python } from '@codemirror/lang-python'
@@ -13,8 +13,8 @@
   import { StreamLanguage } from '@codemirror/language'
   import { pascal } from '@codemirror/legacy-modes/mode/pascal'
 
-  let taskStore = useTaskStore()
-  let { selectedLanguage, code } = storeToRefs(taskStore)
+  let layoutStore = useLayoutStore()
+  let { selectedLanguage, code } = storeToRefs(layoutStore)
 
   const syntaxHighlighter = computed(() => {
     if (selectedLanguage.value === undefined) {
@@ -49,9 +49,9 @@
   @import '@/assets/tournament/editor.css';
 </style>
 <template>
-  <div class="invisible-background" @click="() => { taskStore.toggleEditor() }"></div>
+  <div class="invisible-background" @click="() => { layoutStore.toggleEditor() }"></div>
   <div class="editor-container">
-    <button class="close" @click="() => { taskStore.toggleEditor() }">x</button>
+    <button class="close" @click="() => { layoutStore.toggleEditor() }">x</button>
     <codemirror 
       class="editor"
       :extensions="config"
