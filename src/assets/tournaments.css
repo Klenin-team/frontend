@@ -152,6 +152,7 @@ main .table .tournament:last-child {
   .rat-container {
     position: absolute;
     width: 99%;
+    pointer-events: none;
   }
   .rat-container::after {
     content: "";
