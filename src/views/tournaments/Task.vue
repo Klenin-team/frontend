@@ -52,6 +52,10 @@
       }
     })
   })
+
+  function copyCode() {
+    navigator.clipboard.writeText(layoutStore.code)
+  }
   
 </script>
 
@@ -70,7 +74,7 @@
       <div :class="currentTask.verdict"></div>
       <h1>{{ $route.params.task_id }}</h1>
       <div id="align-right" class="big-desktop-only">
-        <button>Копировать код</button>
+        <button @click="() => { copyCode() }">Копировать код</button>
         <button @click="layoutStore.toggleEditor">Открыть редактор</button>
       </div>
     </header>
