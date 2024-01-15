@@ -16,13 +16,15 @@
   grid-template-columns: 1fr!important;
 }
 
-.taskList:not(.hidden) {
-  border-right: 1px solid var(--surface1);
-  overflow: auto;
-
-  display: grid;
-  align-items: start;
-  align-content: baseline;
+@media (width >= 700px) {
+  .taskList:not(.hidden) {
+    border-right: 1px solid var(--surface1);
+    overflow: auto;
+  
+    display: grid;
+    align-items: start;
+    align-content: baseline;
+  }
 }
 
 .taskList button {
