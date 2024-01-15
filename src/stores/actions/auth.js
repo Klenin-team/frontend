@@ -1,4 +1,5 @@
 async function auth(login, password) {
+  console.log(login, password)
   let response = await fetch(`${import.meta.env.VITE_API_URL}/users/login`, {
     method: "POST",
     headers: {

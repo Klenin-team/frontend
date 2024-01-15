@@ -1,5 +1,14 @@
 <script setup>
-  </script>
+  import { useAuthStore } from '@/stores/auth'
+  let authStore = useAuthStore()
+
+  function checkAuth() {
+    authStore.auth(login.value, password.value)
+  }
+
+  const login = defineModel("login")
+  const password = defineModel("password")
+</script>
 <style scoped>
   @import '../assets/login.css';
 </style>
@@ -24,18 +33,18 @@
       <div class="form">
         <div class="group text">
           <label for="email">Адрес электронной почты</label>
-          <input type="email" id="email">
+          <input type="email" id="email" v-model="login">
         </div>
         <div class="group text">
           <label for="password">Пароль</label>
-          <input type="password" id="password">
+          <input type="password" id="password" v-model="password">
         </div>
         <div class="group">
-          <input type="submit" value="Войти" class="button">
+          <input type=submit value="Войти" @click="checkAuth" class="button" />
         </div>
         <p class="register-link">
           или
-          <router-link to="register">зарегистрируйтесь</router-link>
+          <router-link to="/register">зарегистрируйтесь</router-link>
         </p>
       </div>
     </div>
