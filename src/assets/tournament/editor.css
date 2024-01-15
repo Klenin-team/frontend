@@ -68,14 +68,6 @@ label[for=select-what-send] {
   font-weight: 600; 
 }
 
-.invisible-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-}
-
 @media (width < 900px) {
   .editor-container {
     width: calc(100vw - (16px * 2));

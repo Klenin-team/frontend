@@ -65,32 +65,8 @@ main .filters #search svg * {
   fill: transparent;
 }
 
-main .filters .checkbox-container {
-  display: flex;
-  align-items: center;
+.checkbox-container {
   margin: 20px auto;
-}
-
-main .filters input[type=checkbox] {
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  background-color: var(--subtext1);
-
-  &::after {
-    content: "";
-  }
-  
-  &:checked {
-    background-color: var(--green);
-    content: "marked";
-    padding-top: 2px;
-    padding-left: 5px;
-
-    &::after {
-      content: url("images/mark.svg");
-    }
-  }
 }
 
 main .table {

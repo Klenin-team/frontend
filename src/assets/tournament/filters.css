@@ -1,0 +1,44 @@
+.hidden {
+  display: none;
+}
+
+.filters {
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 18px; 
+
+  position: absolute;
+  padding: 13px;
+  background: var(--overlay0);
+  border-radius: 9px;
+
+  width: calc(300px - 8px - (13px * 2));
+  top: 120px;
+}
+
+.checkbox-container {
+  width: 100%;
+}
+
+label {
+  width: 100%; 
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.verdict-name {
+  align-self: center;
+}
+
+.SE::before {
+  content: "NA"
+}
+
+@media (width < 700px) {
+  .filters {
+    width: calc(100% - 16px - (13px * 2));
+  } 
+}

@@ -7,7 +7,18 @@ export const useLayoutStore = defineStore('layout', {
       taskListClosed: false,
       editorClosed: true,
       selectedLanguage: "",
-      clipboardAvaliable: Boolean(navigator.clipboard)
+      clipboardAvaliable: Boolean(navigator.clipboard),
+
+      filtersClosed: true,
+      filters: {
+        "OK": true,
+        "WA": true,
+        "RE": true,
+        "TL": true,
+        "ML": true,
+        "CE": true,
+        "SE": true
+      }
     }
   },
   actions: {
@@ -16,6 +27,9 @@ export const useLayoutStore = defineStore('layout', {
     },
     toggleEditor() {
       this.editorClosed = !this.editorClosed
+    },
+    toggleFilters() {
+      this.filtersClosed = !this.filtersClosed
     }
   }
 })
