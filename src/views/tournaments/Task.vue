@@ -43,7 +43,8 @@
           console.log(err)
           taskStore.clipboardAvaliable = false
         })
-        
+      } else if (e.keyCode == 27) { // Escape
+        taskStore.editorClosed = true;
       }
     })
   })
