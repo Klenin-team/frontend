@@ -1,12 +1,13 @@
+import router from "@/router"
+
 async function auth(login, password) {
-  console.log(login, password)
   let response = await fetch(`${import.meta.env.VITE_API_URL}/users/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      "username": login,
+      "login": login,
       "password": password
     })
   })
@@ -16,6 +17,7 @@ async function auth(login, password) {
   let json = await response.json()
   this.access = json["access_token"]
   localStorage.setItem("access_token", this.access)
+  router.push('/tournaments/')
   return true
 }
 
@@ -26,9 +28,9 @@ async function register(login, password, real_name) {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      "username": login,
+      "login": login,
       "password": password,
-      "real_name": real_name
+      "full_name": real_name
     })
   })
   if (response.ok == false) {
