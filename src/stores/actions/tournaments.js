@@ -1,31 +1,20 @@
-function getTournaments() {
-  console.log(this.filters)
-  this.tournaments = [
-    {
-      id: "meowmeowmeow",
-      title: "Официальный контест",
-      start_date: "29.09.23 8.30",
-      end_date: "18.19.25 34.25",
-      official: true,
+import { useTournamentsStore } from '@/stores/tournaments.js'
+
+async function getTournaments() {
+  let tournamentsStore = useTournamentsStore() 
+
+  let response = await fetch(`${import.meta.env.VITE_API_URL}/contests`)
+  let json = await response.json()
+  this.tournaments = []
+  json.forEach((tournament) => {
+    this.tournaments.push({
+      id: tournament["id"],
+      title: tournament["title"],
+      start_date: "",
+      end_date: "",
       ended: false
-    },
-    {
-      id: "meowmeowmeowmeow",
-      title: "Не официальный контест",
-      start_date: "29.09.23 8.30",
-      end_date: "18.19.25 34.25",
-      official: false,
-      ended: false
-    },
-    {
-      id: "meowmeowmeowmeowmeow",
-      title: "Закончившийся контест",
-      start_date: "29.09.23 8.30",
-      end_date: "18.19.25 34.25",
-      official: false,
-      ended: true
-    }
-  ]
+    })
+  })
 }
 
 export { getTournaments }

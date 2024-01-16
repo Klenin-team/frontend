@@ -49,7 +49,7 @@
           <p>Конец</p>
         </div>
       </div>
-      <router-link v-for="tournament in tournaments" :to="`tournament/${tournament.id}/`" 
+      <router-link v-for="tournament in tournaments" :to="`/tournament/${tournament.id}/`" 
         class="tournament" :class="{ official: tournament.official, ended: tournament.ended }">
         <h2>{{ tournament.title }}</h2>
         <div class="dates-container">
