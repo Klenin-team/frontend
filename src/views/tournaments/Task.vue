@@ -76,7 +76,7 @@
       <button class="desktop-only" @click="() => { layoutStore.toggleMenu() }">Задачи</button>
       <button :class="currentTask.verdict" class="verdict-popup-button"
         @click="() => { layoutStore.toggleVerdicts() }"></button>
-      <h1>{{ $route.params.task_id }}</h1>
+      <h1>{{ taskStore.currentTask.title }}</h1>
       <div id="align-right" class="big-desktop-only">
         <button @click="() => { copyCode() }">Копировать код</button>
         <button @click="layoutStore.toggleEditor">Открыть редактор</button>
