@@ -2,6 +2,7 @@
   import { onMounted, ref } from 'vue'
 
   import Editor from '@/components/Editor.vue'
+  import Verdicts from '@/components/Verdicts.vue'
 
   import { storeToRefs } from 'pinia'
   import { useTaskStore } from '@/stores/task.js'
@@ -20,6 +21,7 @@
   } = storeToRefs(taskStore)
   let {
     editorClosed,
+    verdictsClosed,
     clipboardAvaliable
   } = storeToRefs(layoutStore)
 
@@ -49,6 +51,7 @@
         })
       } else if (e.keyCode == 27) { // Escape
         layoutStore.editorClosed = true;
+        layoutStore.verdictsClosed = true;
       }
     })
   })
@@ -71,7 +74,8 @@
     <header>
       <router-link class="mobile-only button" to=".">Назад</router-link>
       <button class="desktop-only" @click="() => { layoutStore.toggleMenu() }">Задачи</button>
-      <div :class="currentTask.verdict"></div>
+      <button :class="currentTask.verdict" class="verdict-popup-button"
+        @click="() => { layoutStore.toggleVerdicts() }"></button>
       <h1>{{ $route.params.task_id }}</h1>
       <div id="align-right" class="big-desktop-only">
         <button @click="() => { copyCode() }">Копировать код</button>
@@ -97,5 +101,8 @@
   </article>
   <div :class="{ hidden: editorClosed }">
     <Editor/>
+  </div>
+  <div :class="{ hidden: verdictsClosed }">
+    <Verdicts/>
   </div>
 </template>

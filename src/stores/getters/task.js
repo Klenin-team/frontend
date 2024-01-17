@@ -1,6 +1,8 @@
 import { marked } from 'marked'
 import katex from 'katex'
 
+import { toHumanReadableTime, toHumanReadableMemory } from '@/functions/toHumanReadable'
+
 function renderedTaskText() {
   if (this.currentTask === undefined) {
     return ""
@@ -16,47 +18,11 @@ function renderedTaskText() {
 }
 
 function humanReadableMemory () {
-  let bytes = this.currentTask.memory_limitation
-  const sizes = [
-    'Б',
-    'КиБ',
-    'МиБ',
-    'Гиб'
-  ]
-  let size_pointer = 0;
-  while (bytes >= 1024) {
-    bytes /= 1024;
-    size_pointer += 1;
-  } 
-  return `${bytes} ${sizes[size_pointer]}`
+  return toHumanReadableMemory(this.currentTask.memory_limitation, null)
 }
 
 function humanReadableTime() {
-  let milliseconds = this.currentTask.time_limitation
-  const sizes = [
-    {
-      size: 1,
-      name: 'мс'
-    },
-    {
-      size: 1000,
-      name: 'сек.'
-    },
-    {
-      size: 60,
-      name: 'мин.'
-    },
-    {
-      size: 60,
-      name: 'ч.'
-    },
-  ]
-  let size_pointer = 0;
-  while (milliseconds >= sizes[size_pointer + 1].size) {
-    milliseconds /= sizes[size_pointer + 1].size
-    size_pointer += 1
-  }
-  return `${milliseconds} ${sizes[size_pointer].name}`
+  return toHumanReadableTime(this.currentTask.time_limitation, null)
 }
 
 export { renderedTaskText, humanReadableTime, humanReadableMemory }

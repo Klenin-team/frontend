@@ -22,6 +22,14 @@ footer {
   justify-content: center;
 }
 
+.verdict-popup-button {
+  padding: 0;
+}
+
+.verdict-popup-button::before {
+  margin-right: 0;
+}
+
 .mobile-only {
   display: none;
 }

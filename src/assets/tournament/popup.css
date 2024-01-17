@@ -1,0 +1,15 @@
+.close {
+  position: absolute;
+  right: 17px;
+  top: 17px;
+  z-index: 999;
+  background-color: var(--surface1);
+  line-height: 0%;
+  transition: background-color 0.25s;
+}
+
+.close:hover {
+  background-color: var(--red);
+}
+
+

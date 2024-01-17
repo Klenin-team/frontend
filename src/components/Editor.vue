@@ -47,6 +47,7 @@
 </script>
 <style scoped>
   @import '@/assets/tournament/editor.css';
+  @import '@/assets/tournament/popup.css';
 </style>
 <template>
   <div class="invisible-background" @click="() => { layoutStore.toggleEditor() }"></div>

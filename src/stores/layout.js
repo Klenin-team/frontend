@@ -9,6 +9,8 @@ export const useLayoutStore = defineStore('layout', {
       selectedLanguage: "",
       clipboardAvaliable: Boolean(navigator.clipboard),
 
+      verdictsClosed: true,
+
       filtersClosed: true,
       filters: {
         "OK": true,
@@ -30,6 +32,9 @@ export const useLayoutStore = defineStore('layout', {
     },
     toggleFilters() {
       this.filtersClosed = !this.filtersClosed
-    }
+    },
+    toggleVerdicts() {
+      this.verdictsClosed = !this.verdictsClosed
+    },
   }
 })

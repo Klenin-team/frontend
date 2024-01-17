@@ -18,6 +18,29 @@ export const useTaskStore = defineStore('task', {
         verdict: "",
         text: `Сейчас всё загрузим`,
       },
+      verdicts: [
+        {
+          verdict: "WA",
+          time: 1000,
+          memory: 123456,
+          test: {
+            input: "meow",
+            output: "meow"
+          },
+          compilation_output: "not meow",
+          runtime_output: "meow meow"
+        },
+        {
+          verdict: "TL",
+          time: 60005,
+          memory: 999999999
+        },
+        {
+          verdict: "OK",
+          time: 2,
+          memory: 64
+        }
+      ]
     }
   },
   getters: {

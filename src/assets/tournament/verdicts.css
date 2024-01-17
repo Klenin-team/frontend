@@ -1,0 +1,52 @@
+.verdicts-popup-container {
+  background-color: var(--surface0);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 50%;
+  max-width: 600px;
+
+  overflow-y: scroll;
+}
+
+.verdicts-container {
+  margin: 32px;
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 32px;
+
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 121%
+}
+
+ul {
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+  cursor: pointer;
+
+  padding: 0;
+}
+
+li {
+  display: block;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
+}
+
+li:not(.OK) .time-and-memory {
+  text-decoration: underline;
+  font-weight: 500; 
+}
+
+@media (width < 1000px) {
+  .verdicts-popup-container {
+    width: 100%;
+  }
+}
