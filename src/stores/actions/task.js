@@ -1,3 +1,5 @@
+import { useAuthStore } from "../auth"
+
 async function getTask(task_id) {
   console.log(task_id)
   this.currentTask = {
@@ -10,6 +12,7 @@ async function getTask(task_id) {
   let json = await response.json()
 
   this.currentTask = json
+  this.getVerdictsForTasks()
 }
 
 async function getTasks (tournament_id) {
@@ -30,4 +33,28 @@ async function getTasks (tournament_id) {
   })
 }
 
-export { getTask, getTasks }
+async function getVerdictsForTasks() {
+  const authStore = useAuthStore()
+  for (let i in this.tasksList) {
+    let response = await fetch(`${import.meta.env.VITE_API_URL}/solutions/${this.tasksList[i].id}`, {
+      headers: {
+        "Authorization": `Bearer ${authStore.access}` 
+      }
+    })
+    let json = await response.json()
+    this.tasksList.verdict = json[0]["solutions"][0]["verdict"]
+  }
+}
+
+async function getVerdictForTask(task_id) {
+  const authStore = useAuthStore()
+  let response = await fetch(`${import.meta.env.VITE_API_URL}/solutions/${this.tasksList[i].id}`, {
+    headers: {
+      "Authorization": `Bearer ${authStore.access}` 
+    }
+  })
+  let json = await response.json()
+  this.tasksList.verdict = json[0]
+}
+
+export { getTask, getTasks, getVerdictForTask, getVerdictsForTasks }
