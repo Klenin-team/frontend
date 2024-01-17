@@ -6,6 +6,7 @@ export const useLayoutStore = defineStore('layout', {
       code: "",
       taskListClosed: false,
       editorClosed: true,
+      sendingDisabled: false, 
       selectedLanguage: "",
       clipboardAvaliable: Boolean(navigator.clipboard),
 

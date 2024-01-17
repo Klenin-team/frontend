@@ -1,7 +1,10 @@
 import { useAuthStore } from "../auth"
+import { useLayoutStore } from "../layout"
 
 async function getTask(task_id) {
-  console.log(task_id)
+  const authStore = useAuthStore()
+  const layoutStore = useLayoutStore()
+
   this.currentTask = {
     title: "Сейчас всё будет...",
     verdict: "",
@@ -12,7 +15,20 @@ async function getTask(task_id) {
   let json = await response.json()
 
   this.currentTask = json
+
+  if (!authStore.access) {
+    return
+  }
+
   this.getVerdictsForTasks()
+  response = await fetch(`${import.meta.env.VITE_API_URL}/solutions/${this.tasksList[i].id}`, {
+    headers: {
+      "Authorization": `Bearer ${authStore.access}` 
+    }
+  })
+  json = await response.json()
+
+  layoutStore.code = json[0]["code"]
 }
 
 async function getTasks (tournament_id) {
@@ -31,6 +47,7 @@ async function getTasks (tournament_id) {
       verdict: ""
     })
   })
+  this.getVerdictsForTasks()
 }
 
 async function getVerdictsForTasks() {
@@ -42,7 +59,7 @@ async function getVerdictsForTasks() {
       }
     })
     let json = await response.json()
-    this.tasksList.verdict = json[0]["solutions"][0]["verdict"]
+    this.tasksList.verdict = getFirstError(json[0]["solutions"])["verdict"]
   }
 }
 
@@ -54,7 +71,19 @@ async function getVerdictForTask(task_id) {
     }
   })
   let json = await response.json()
-  this.tasksList.verdict = json[0]
+  this.tasksList.verdict = json[0].solutions
 }
 
-export { getTask, getTasks, getVerdictForTask, getVerdictsForTasks }
+async function sendSolution() {
+  const layoutStore = useLayoutStore()
+  layoutStore.sendingDisabled = true
+
+  // TODO: sending
+
+  layoutStore.editorClosed = true
+  layoutStore.verdictsClosed = false
+  layoutStore.sendingDisabled = false
+}
+
+export { getTask, getTasks, getVerdictForTask, getVerdictsForTasks, sendSolution }
+

@@ -5,6 +5,7 @@
   import { catppuccin } from '@/assets/codemirror-theme.js'
 
   import { useLayoutStore } from '@/stores/layout.js';
+  import { useTaskStore } from '@/stores/task.js';
   import { storeToRefs } from 'pinia'
 
   import { python } from '@codemirror/lang-python'
@@ -14,7 +15,8 @@
   import { pascal } from '@codemirror/legacy-modes/mode/pascal'
 
   let layoutStore = useLayoutStore()
-  let { selectedLanguage, code } = storeToRefs(layoutStore)
+  let taskStore = useTaskStore()
+  let { selectedLanguage, code, sendingDisabled } = storeToRefs(layoutStore)
 
   const syntaxHighlighter = computed(() => {
     if (selectedLanguage.value === undefined) {
@@ -72,7 +74,7 @@
       </select>
       <label for="select-what-send">или выберете файл</label>
       <input type="file" id="select-what-send" />
-      <button class="send">Отправить</button>
+      <button class="send" :disabled="sendingDisabled" @click="taskStore.sendSolution">Отправить</button>
     </div>
   </div>
 </template>

@@ -54,6 +54,10 @@ label[for=select-what-send] {
   font-weight: 600; 
 }
 
+.send:disabled {
+  background-color: var(--overlay0);
+}
+
 @media (width < 900px) {
   .editor-container {
     width: calc(100vw - (16px * 2));

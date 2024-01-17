@@ -6,6 +6,7 @@
   import { storeToRefs } from 'pinia'
 
   import { toHumanReadableTime, toHumanReadableMemory } from '@/functions/toHumanReadable'
+  import { getFirstError } from '@/functions/getFirstError'
 
   import TestInformation from '@/components/TestInformation.vue'
 
@@ -17,13 +18,7 @@
   let closedTests = ref(Array(true * verdicts.value.length).fill(true))
 
   const firstError = computed(() => {
-    for (const verdict of verdicts.value) {
-      if (verdict.verdict != "OK") {
-        return verdict
-      }
-    }
-    verdicts.value.forEach((verdict) => {
-    })
+    return getFirstError(verdicts.value)
   })
 </script>
 

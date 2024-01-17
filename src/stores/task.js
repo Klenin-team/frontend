@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { renderedTaskText, humanReadableTime, humanReadableMemory } from './getters/task'
-import { getTask, getTasks, getVerdictForTask, getVerdictsForTasks } from './actions/task'
+import { getTask, getTasks, getVerdictForTask, getVerdictsForTasks,
+         sendSolution } from './actions/task'
 
 export const useTaskStore = defineStore('task', {
   state: () => {
@@ -52,6 +53,7 @@ export const useTaskStore = defineStore('task', {
     getTask,
     getTasks,
     getVerdictForTask,
-    getVerdictsForTasks
+    getVerdictsForTasks,
+    sendSolution
   }
 })
